@@ -1,0 +1,1 @@
+"""Plugin registry — discovery, validation, and lookup."""
