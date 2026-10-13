@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-vehicle-design-studio"
+version = "0.4.2"
+description = "Plugin-host desktop studio for AI-assisted car and vehicle design generation."
+readme = "CONTRIBUTING.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [
+    { name = "Studio Core Team", email = "core@ai-vehicle-design-studio.dev" },
+]
+keywords = ["ai", "vehicle", "car-design", "generative", "cad", "plugin-host"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Win32 (MS Windows)",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Graphics :: 3D Modeling",
+]
+
+dependencies = [
+    "numpy>=1.26,<3",
+    "pydantic>=2.6,<3",
+    "tomli-w>=1.0",
+    "typer>=0.12",
+    "rich>=13.7",
+    "watchdog>=4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.4",
+    "black>=24.3",
+    "mypy>=1.10",
+]
+torch = ["torch>=2.3"]
+onnx = ["onnxruntime>=1.18"]
+
+[project.scripts]
+avds = "studio.bootstrap:main"
+
+[tool.setuptools.packages.find]
+include = ["studio*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["studio"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
