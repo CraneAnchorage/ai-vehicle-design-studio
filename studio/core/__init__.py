@@ -1,0 +1,1 @@
+"""Core host logic. Thin by design — most behavior lives in plugins."""
