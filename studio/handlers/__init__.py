@@ -1,0 +1,1 @@
+"""Request handlers — translate raw user input into pipeline-ready requests."""
